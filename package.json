@@ -5,8 +5,15 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "npm run build && npm --prefix ./functions run build && firebase deploy",
+    "deploy-functions": "npm --prefix ./functions run build && firebase deploy --only functions",
+    "deploy-hosting": "firebase deploy --only hosting",
+    "dev-watch": "ng build --watch --configuration development",
+    "dev-emulators": "firebase emulators:start",
+    "dev-deploy": "git pull && ng build && git add . && git commit --amend && git push",
+    "dev-functions": "npm --prefix ./functions run build:watch",
+    "watch": "run-p dev-watch dev-emulators dev-functions"
   },
   "private": true,
   "dependencies": {
@@ -18,6 +25,9 @@
     "@angular/platform-browser": "^15.1.0",
     "@angular/platform-browser-dynamic": "^15.1.0",
     "@angular/router": "^15.1.0",
+    "firebase-admin": "^11.5.0",
+    "formidable": "^3.2.5",
+    "multer": "^1.4.5-lts.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
