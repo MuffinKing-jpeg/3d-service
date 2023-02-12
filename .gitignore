@@ -49,3 +49,5 @@ Thumbs.db
 /functions/
 */**/lib
 /functions/**/*
+
+*.cache
