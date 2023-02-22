@@ -1,0 +1,35 @@
+@use '../../../../assets/scss/contact-btn' as btn;
+
+.contacts {
+  text-align: center;
+
+  &--wrapper {
+    background-color: var(--secondary-bg);
+  }
+
+}
+
+.separator {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: calc(var(--padding) * 4) 0;
+  opacity: 0.2;
+  color: var(--text-primary);
+
+  &-line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    margin: auto 0;
+  }
+
+  &-text {
+    width: auto;
+    padding: 0 4px;
+  }
+}
+
+.create-application {
+  @include btn.contactBtn
+}

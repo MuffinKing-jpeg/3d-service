@@ -1,21 +1,9 @@
-<section class="pricing">
+<section class="pricing content-container">
     <h2 class="title">Ціни</h2>
     <ul class="pricing-list">
-        <li class="pricing-item">
-            <div class="pricing-item-title">name</div>
-            <div class="pricing-item-description">desc</div>
-        </li>
-        <li class="pricing-item">
-            <div class="pricing-item-title">name</div>
-            <div class="pricing-item-description">desc</div>
-        </li>
-        <li class="pricing-item">
-            <div class="pricing-item-title">name</div>
-            <div class="pricing-item-description">desc</div>
-        </li>
-        <li class="pricing-item">
-            <div class="pricing-item-title">name</div>
-            <div class="pricing-item-description">desc</div>
+        <li *ngFor="let item of pricing; index as i" class="pricing-item">
+            <h3 class="pricing-item-title">{{item.name}} <br> {{item.price}} грн/г</h3>
+            <div class="pricing-item-description">{{item.description}}</div>
         </li>
     </ul>
 </section>

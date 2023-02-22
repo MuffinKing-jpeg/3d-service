@@ -1,0 +1,23 @@
+@mixin contactBtn {
+  max-width: 500px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+
+  a {
+    background-color: var(--main-bg);
+    border: solid 2px var(--text-primary);
+    border-radius: var(--padding);
+    color: var(--text-primary);
+    padding: var(--padding);
+    display: block;
+    margin: auto 0;
+    width: 100%;
+
+
+    &:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+  }
+}

@@ -1,1 +1,6 @@
-<p>floating-header works!</p>
+<div class="anchor">
+    <header [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent}"
+            class="content-container header">
+        <app-contacts [flexDirection]="'row'"></app-contacts>
+    </header>
+</div>

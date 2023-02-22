@@ -1,0 +1,27 @@
+.pricing {
+  &-list {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    gap: calc(var(--padding) * 3);
+    padding-inline-start: 0;
+    font-size: 1.5em;
+  }
+
+  &-item {
+    background-color: var(--secondary-bg);
+    border-radius: var(--padding);
+    border-style: solid;
+    border-color: var(--text-primary);
+    max-width: 230px;
+    padding: var(--padding);
+
+    &-title {
+      margin: 4px auto;
+    }
+
+    &::marker {
+      content: none;
+    }
+  }
+}

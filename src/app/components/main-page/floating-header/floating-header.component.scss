@@ -1,0 +1,64 @@
+
+.header {
+  position: absolute;
+  height: var(--header-height);
+  padding-top: var(--padding);
+  padding-bottom: var(--padding);
+  background-color: var(--main-bg);
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  left: 0;
+  right: 0;
+  top: 100%;
+
+  app-contacts {
+    height: 100%;
+    display: block;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+}
+
+.opaque {
+  animation: unDissolve linear 500ms;
+}
+
+.transparent {
+  opacity: 0;
+  z-index: -99;
+  animation: dissolve linear 500ms;
+}
+
+@keyframes dissolve {
+  0% {
+    opacity: 1;
+    z-index: 0;
+  }
+  99% {
+    opacity: 0;
+    z-index: 0;
+  }
+  100% {
+    opacity: 0;
+    z-index: -99;
+  }
+}
+
+@keyframes unDissolve {
+  0% {
+    opacity: 0;
+    z-index: -99;
+  }
+  1% {
+    opacity: 0;
+    z-index: unset;
+  }
+  100% {
+    opacity: 1;
+    z-index: unset;
+  }
+}

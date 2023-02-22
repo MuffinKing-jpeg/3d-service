@@ -24,6 +24,12 @@ a {
 
 .content-container {
   padding: calc(var(--padding) * 2.5);
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.wrapper {
+  width: 100%;
 }
 
 .title {
@@ -31,4 +37,7 @@ a {
   font-size: 2em;
 }
 
+.anchor {
+  position: relative;
+}
 
