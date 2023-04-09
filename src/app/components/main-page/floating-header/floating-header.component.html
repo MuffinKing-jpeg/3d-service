@@ -1,6 +1,36 @@
 <div class="anchor">
-    <header [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent}"
-            class="content-container header">
-        <app-contacts [flexDirection]="'row'"></app-contacts>
-    </header>
+    <nav [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent}"
+         class="navbar navbar-expand-sm w-100 header bg-primary my-0 mb-3 navbar-dark">
+        <div class="container-fluid">
+            <a [routerLink]="'./create'" class="navbar-brand">
+                <i class="fa-solid fa-wrench fa-bounce"></i>
+                Залишити заявку
+            </a>
+
+            <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;
+            </button>
+
+            <span [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li *ngFor="let item of contactsList; index as i;">
+                        <a class="btn" routerLink="/{{item.name}}">
+                            <i class="{{item.icon}}"></i>
+                            {{item.name}}
+                        </a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </nav>
+    <!--        <div class="me-auto p-1">-->
+    <!--            <a class="btn btn-secondary btn-sm" routerLink="/create">-->
+    <!--                <i class="fa-solid fa-wrench fa-bounce"></i>-->
+    <!--                Залишиити заявку-->
+    <!--            </a>-->
+    <!--        </div>-->
+
+    <!--        <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;</button>-->
+
+    <!--        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">-->
+
 </div>

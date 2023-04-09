@@ -1,60 +1,15 @@
-@use "../../../../assets/scss/skin" as skin;
-
 .fullscreen {
   height: 100vh;
   width: 100%;
   background-image: url(../../../../assets/img/3d-print-electronics-3-scaled.jpg);
   background-size: cover;
   position: relative;
-
 }
 
 .overlay {
-  background: radial-gradient(65% 65% at 50% 50%, rgba(37, 37, 37, 0.75) 0%, #252525 100%);
+  background: linear-gradient(123deg, #33b7e2, #5e62b0, #dc307c);
+  opacity: 0.9;
   height: 100%;
   width: 100%;
   position: absolute;
-}
-
-.centred {
-  margin: auto;
-  text-align: center;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-direction: column;
-}
-
-h1 {
-  font-size: 4em;
-  color: var(--text-white);
-  font-weight: bold;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  max-width: 500px;
-  width: 100%;
-  margin: 0 auto;
-
-  a {
-    text-align: center;
-    margin: auto;
-    color: var(--text-white);
-    background-color: rgba(skin.$grey-bg, 0.8);
-    padding: var(--padding);
-    border-radius: var(--padding);
-    border-color: var(--text-white);
-    border-width: 2px;
-    border-style: solid;
-
-    &:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-  }
 }

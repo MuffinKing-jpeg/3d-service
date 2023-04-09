@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import ContactsJson from "../../../config/contacts.json";
 
 @Component({
     selector: 'app-floating-header',
@@ -8,5 +9,8 @@ import {Component, Input} from '@angular/core';
 export class FloatingHeaderComponent {
     @Input() sticky = false;
     @Input() transparent = false;
+    contactsList = ContactsJson;
+    isMenuCollapsed = true;
+
 
 }

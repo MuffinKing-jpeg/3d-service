@@ -5,6 +5,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {RedirectComponent} from './components/redirect/redirect.component';
 import {RedirectGuard} from "./redirect.guard";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
 
 @NgModule({
     declarations: [
@@ -13,8 +15,9 @@ import {RedirectGuard} from "./redirect.guard";
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
-
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        NgbCollapseModule
     ],
     providers: [RedirectGuard],
     bootstrap: [AppComponent]

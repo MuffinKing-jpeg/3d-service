@@ -6,21 +6,7 @@ footer {
   background-color: var(--secondary-bg);
   font-size: 0.5em;
 
-  h3 {
-    margin: 0 auto;
-    text-align: center;
-
-    .fa-heart {
-      color: var(--accent);
-    }
-  }
-
-  a:hover {
+  .fa-heart {
     color: var(--accent);
   }
-
-}
-
-.container {
-  margin: 0 auto;
 }
