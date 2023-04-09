@@ -1,10 +1,12 @@
 <div class="anchor">
-    <nav [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent}"
-         class="navbar navbar-expand-sm w-100 header bg-primary my-0 mb-3 navbar-dark">
+    <nav [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent, 'bg-primary': sticky || !isMenuCollapsed}"
+         class="navbar navbar-expand-md w-100 header my-0 mb-3 navbar-dark floating-header px-3">
         <div class="container-fluid">
-            <a [routerLink]="'./create'" class="navbar-brand">
-                <i class="fa-solid fa-wrench fa-bounce"></i>
+            <a [routerLink]="'./create'" class="btn btn-secondary">
+                <span class="navbar-brand">
+                  <i class="fa-solid fa-wrench fa-bounce"></i>
                 Залишити заявку
+                </span>
             </a>
 
             <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;
@@ -13,7 +15,7 @@
             <span [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li *ngFor="let item of contactsList; index as i;">
-                        <a class="btn" routerLink="/{{item.name}}">
+                        <a class="btn mx-1" routerLink="/{{item.name}}">
                             <i class="{{item.icon}}"></i>
                             {{item.name}}
                         </a>
@@ -22,15 +24,4 @@
             </span>
         </div>
     </nav>
-    <!--        <div class="me-auto p-1">-->
-    <!--            <a class="btn btn-secondary btn-sm" routerLink="/create">-->
-    <!--                <i class="fa-solid fa-wrench fa-bounce"></i>-->
-    <!--                Залишиити заявку-->
-    <!--            </a>-->
-    <!--        </div>-->
-
-    <!--        <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;</button>-->
-
-    <!--        <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">-->
-
 </div>

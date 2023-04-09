@@ -1,14 +1,13 @@
 .fullscreen {
   height: 100vh;
   width: 100%;
-  background-image: url(../../../../assets/img/3d-print-electronics-3-scaled.jpg);
   background-size: cover;
   position: relative;
 }
 
 .overlay {
-  background: linear-gradient(123deg, #33b7e2, #5e62b0, #dc307c);
-  opacity: 0.9;
+  background-image: url(../../../../assets/img/3d-print-electronics-3-scaled.jpg);
+  opacity: 0.09;
   height: 100%;
   width: 100%;
   position: absolute;
