@@ -1,0 +1,14 @@
+.fullscreen {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.overlay {
+  background-image: url(../../../../assets/img/3d-print-electronics-3-scaled.jpg);
+  background-size: cover;
+  opacity: 0.09;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}

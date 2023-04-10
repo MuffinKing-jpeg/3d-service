@@ -1,0 +1,20 @@
+//.article {
+//
+//  &:nth-child(even) {
+//    flex-direction: row-reverse;
+//    text-align: right;
+//
+//    & .article-content {
+//      margin-right: calc(var(--padding) * 4);
+//    }
+//  }
+//
+//  &:nth-child(odd) {
+//    flex-direction: row;
+//
+//    & .article-content {
+//      margin-left: calc(var(--padding) * 4);
+//    }
+//
+//  }
+//}

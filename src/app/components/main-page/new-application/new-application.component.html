@@ -1,0 +1,17 @@
+<section class="container mt-3">
+    <h2 class="my-1 mb-3 py-1">Зв'зок з нами</h2>
+    <ul class="list-unstyled w-100 row row-cols-sm-3 row-cols-1 mx-0 justify-content-between">
+        <li class="col-1 my-2 px-1">
+            <a class="btn btn-lg btn-primary my-auto w-100" routerLink="/create">
+                <i class="fa-solid fa-wrench fa-bounce"></i>
+                Залишиити заявку
+            </a>
+        </li>
+        <li *ngFor="let item of contactsList;" class="col-1 my-2 px-1">
+            <a class="btn btn-secondary w-100" routerLink="/{{item.name}}">
+                <i class="{{item.icon}}"></i>
+                {{item.name}}
+            </a>
+        </li>
+    </ul>
+</section>

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Instagram",
+    "link": "https://instagram.com",
+    "icon": "fa-brands fa-instagram"
+  },
+  {
+    "name": "Telegram",
+    "link": "https://t.me",
+    "icon": "fa-brands fa-telegram"
+  }
+]
+
