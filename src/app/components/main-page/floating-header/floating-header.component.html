@@ -1,7 +1,7 @@
-<div class="anchor">
+<div class="anchor ">
     <nav [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent, 'bg-primary': sticky || !isMenuCollapsed}"
-         class="navbar navbar-expand-md w-100 header my-0 mb-3 navbar-dark floating-header px-3">
-        <div class="container-fluid">
+         class="navbar navbar-expand-md w-100 header my-0 mb-3 navbar-dark floating-header px-1">
+        <div class="container">
             <a [routerLink]="'./create'" class="btn btn-secondary">
                 <span class="navbar-brand">
                   <i class="fa-solid fa-wrench fa-bounce"></i>
@@ -14,7 +14,7 @@
 
             <span [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
-                    <li *ngFor="let item of contactsList; index as i;">
+                    <li *ngFor="let item of contactsList;">
                         <a class="btn mx-1" routerLink="/{{item.name}}">
                             <i class="{{item.icon}}"></i>
                             {{item.name}}
