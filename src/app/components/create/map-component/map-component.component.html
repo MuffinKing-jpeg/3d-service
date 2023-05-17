@@ -1,0 +1,10 @@
+<div *ngIf="apiLoaded | async" class="mt-2 rounded-2">
+    <google-map [center]="mapCenter"
+                [options]="options"
+                class="rounded-2"
+                height="300px"
+                width="100%">
+        <map-marker [options]="markerOptions"
+                    [position]="markerPosition"></map-marker>
+    </google-map>
+</div>

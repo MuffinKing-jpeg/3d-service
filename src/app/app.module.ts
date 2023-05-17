@@ -6,20 +6,21 @@ import {AppComponent} from './app.component';
 import {RedirectComponent} from './components/redirect/redirect.component';
 import {RedirectGuard} from "./redirect.guard";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NgbCollapseModule} from "@ng-bootstrap/ng-bootstrap";
+import {FooterComponent} from './components/footer/footer.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         RedirectComponent,
+        FooterComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        NgbCollapseModule
     ],
     providers: [RedirectGuard],
+    exports: [],
     bootstrap: [AppComponent]
 })
 export class AppModule {
