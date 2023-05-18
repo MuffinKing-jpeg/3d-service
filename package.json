@@ -9,8 +9,8 @@
     "deploy": "npm run build && npm --prefix ./functions run build && firebase deploy",
     "deploy-functions": "npm --prefix ./functions run build && firebase deploy --only functions",
     "deploy-hosting": "firebase deploy --only hosting",
-    "dev-watch": "ng build --watch --configuration development",
-    "dev-emulators": "firebase emulators:start",
+    "dev-watch": "ng serve",
+    "dev-emulators": "firebase emulators:start --only storage,logging,hub,ui,auth,functions",
     "dev-deploy": "git pull && ng build && git add . && git commit --amend && git push",
     "dev-functions": "npm --prefix ./functions run build:watch",
     "watch": "run-p dev-watch dev-emulators dev-functions"

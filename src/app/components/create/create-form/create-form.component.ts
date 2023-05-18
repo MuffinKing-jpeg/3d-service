@@ -123,13 +123,6 @@ export class CreateFormComponent implements OnInit {
             for (let i = 0; i < target.files.length; i++) {
                 this.formData.append(`file`, target.files[i])
             }
-            // if (this.http) {
-            //     const upload$ = this.http.post("http://127.0.0.1:5001/printspeed-3d/us-central1/newApplication", this.formData);
-            //
-            //     upload$.subscribe(v => {
-            //         console.log(v)
-            //     });
-            // }
         }
     }
     onSubmit = () => {
@@ -150,6 +143,7 @@ export class CreateFormComponent implements OnInit {
             const upload$ = this.http.post(funcUrl, this.formData);
 
             upload$.subscribe(v => {
+              console.log(v)
             });
         }
     }
