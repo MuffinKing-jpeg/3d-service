@@ -1,9 +1,23 @@
-<section class="pricing content-container">
-    <h2 class="title">Ціни</h2>
-    <ul class="pricing-list">
-        <li *ngFor="let item of pricing; index as i" class="pricing-item">
-            <h3 class="pricing-item-title">{{item.name}} <br> {{item.price}} грн/г</h3>
-            <div class="pricing-item-description">{{item.description}}</div>
+<section class="pricing container mt-3">
+    <h2 class="">Ціни на матеріал</h2>
+    <ul class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 mb-3 text-center list-unstyled px-1 justify-content-between">
+        <li *ngFor="let item of pricing;" class="col mb-3 ">
+            <div class="card border-primary rounded-3 shadow-sm h-100">
+                <div class="card-header py-2 text-bg-primary border-primary">
+                    <h3 class="my-0 fw-bold">{{item.name}}</h3>
+                </div>
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h1 class="card-title pricing-card-title">₴{{item['price']}}<small
+                            class="text-muted fw-light">грн/г</small></h1>
+                    <div class="mt-1 pb-2 mb-auto">
+                        {{item.description}}
+                    </div>
+                    <a class="w-100 btn btn-lg btn-primary mt-auto mb-0" routerLink="./create" type="button">
+                        Обрати
+                    </a>
+                </div>
+                <div class="pricing-item-description"></div>
+            </div>
         </li>
     </ul>
 </section>

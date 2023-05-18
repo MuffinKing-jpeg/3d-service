@@ -1,21 +1,13 @@
-
-.header {
+.anchor {
   position: absolute;
-  height: var(--header-height);
-  padding-top: var(--padding);
-  padding-bottom: var(--padding);
-  background-color: var(--main-bg);
-  margin: auto;
-  justify-content: center;
-  align-content: center;
-  left: 0;
-  right: 0;
   top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 50;
+}
 
-  app-contacts {
-    height: 100%;
-    display: block;
-  }
+.floating-header {
+  transition: background-color 500ms ease-out;
 }
 
 .sticky {

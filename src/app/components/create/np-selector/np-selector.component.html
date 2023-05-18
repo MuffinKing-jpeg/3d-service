@@ -1,0 +1,34 @@
+<div class="modal-header">
+    <h4 class="modal-title pull-left">Вибір відділення</h4>
+    <button (click)="modalService.hide()" aria-label="Close" class="btn-close close pull-right" type="button">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="row mb-2" style="position: relative !important;">
+        <h5>Місто:</h5>
+        <input (typeaheadOnSelect)="selectCity($event)"
+               [(ngModel)]="citySearch"
+               [adaptivePosition]="true"
+               [isAnimated]="true"
+               [typeahead]="citySuggestions$"
+               class="form-control"
+               type="text"
+               typeaheadOptionField="Present">
+    </div>
+    <div *ngIf="selectedCity" class="row mb-2" style="position: relative !important;">
+        <h5>Відділення</h5>
+        <input (typeaheadOnSelect)="selectDepot($event)"
+               [(ngModel)]="depotSearch"
+               [adaptivePosition]="true"
+               [isAnimated]="true"
+               [typeahead]="depotSuggestions$"
+               class="form-control"
+               type="text"
+               typeaheadOptionField="Description">
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger row" role="alert">
+        {{ errorMessage }}
+    </div>
+</div>
+

@@ -1,18 +1,17 @@
-<div class="wrapper contacts--wrapper">
-    <section class="contacts content-container">
-        <h2 class="contacts-title">Зв'зок з нами</h2>
-
-        <div class="create-application">
-            <a routerLink="/create">
-                <i class="fa-solid fa-wrench"></i>
+<section class="container mt-3">
+    <h2 class="">Зв'зок з нами</h2>
+    <ul class="list-unstyled w-100 row row-cols-lg-3 row-cols-1 mx-0 justify-content-between">
+        <li class="col my-1 px-1">
+            <a class="btn btn-lg btn-primary my-auto w-100" routerLink="/create">
+                <i class="fa-solid fa-wrench fa-bounce"></i>
                 Залишиити заявку
             </a>
-        </div>
-        <div class="separator">
-            <span class="separator-line"></span>
-            <span class="separator-text">або</span>
-            <span class="separator-line"></span>
-        </div>
-        <app-contacts [flexDirection]="'column'"></app-contacts>
-    </section>
-</div>
+        </li>
+        <li *ngFor="let item of contactsList;" class="col my-1 px-1">
+            <a class="btn btn-secondary w-100" routerLink="/{{item.name}}">
+                <i class="{{item.icon}}"></i>
+                {{item.name}}
+            </a>
+        </li>
+    </ul>
+</section>

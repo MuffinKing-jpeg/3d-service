@@ -46,8 +46,10 @@ Thumbs.db
 *.log
 
 */**/node_modles
-/functions/
+functions/
 */**/lib
-/functions/**/*
+
+/functions
 
 *.cache
+

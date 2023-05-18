@@ -1,0 +1,180 @@
+<div class="container mt-5" xmlns="http://www.w3.org/1999/html">
+    <h2>Замовлення</h2>
+    <form (submit)="onSubmit()" *ngIf="myForm" [formGroup]="myForm" class="form-inline row">
+
+        <div class="form-group col-md-4 order-md-last mb-2">
+            <h4>Матеріал</h4>
+            <div btnRadioGroup class="btn-group-vertical w-100" formControlName="material">
+                <label *ngFor="let material of materials" btnRadio="{{material.name}}"
+                       class="btn btn-secondary mb-0 w-100">
+                    <span class="d-flex w-100 justify-content-between">
+                        <span class="fw-bold">{{material.name}}</span>
+                        <span class="">{{material['price']}}<small>грн/г</small></span>
+                    </span>
+
+                </label>
+            </div>
+            <pre *ngIf="isDev" class="card card-block card-header mt-2">{{ myForm.value | json }}</pre>
+            <div *ngIf="selectedMaterial" class="card mt-2">
+                <h5 class="card-header">
+                    Про {{selectedMaterial.name}}:
+                </h5>
+                <div class="card-body">
+                    {{selectedMaterial.description}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 form-group">
+            <h4>Контакти<small class="text-danger">*</small></h4>
+            <div class="row">
+                <div class="form-floating col-lg mb-2">
+                    <input [class]="{
+                    'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched),
+                    'is-valid': firstName.valid && (firstName.dirty || firstName.touched),
+                    'form-control': true}"
+                           formControlName="firstName"
+                           id="formFirstName"
+                           placeholder="Ваше ім'я"
+                           type="text">
+                    <label for="formFirstName">Ваше ім'я<small class="text-danger">*</small></label>
+                    <div class="invalid-feedback">
+                        <div *ngIf="firstName.errors?.['required']">Це поле є обов'язковим</div>
+                        <div *ngIf="firstName.errors?.['minlength']">Мінімально 2 букви</div>
+                        <div *ngIf="firstName.errors?.['pattern']">Допускаються тільки кирилиця</div>
+                    </div>
+                </div>
+                <div class="form-floating col-lg mb-2">
+                    <input [class]="{
+                    'is-invalid': secondName.invalid && (secondName.dirty || secondName.touched),
+                    'is-valid': secondName.valid && (secondName.dirty || secondName.touched),
+                    'form-control': true}"
+                           formControlName="secondName"
+                           id="formSecondName"
+                           placeholder="Ваше Призвіще"
+                           type="text">
+                    <label for="formSecondName">Ваше Призвіще<small class="text-danger">*</small></label>
+                    <div class="invalid-feedback">
+                        <div *ngIf="secondName.errors?.['required']">Це поле є обов'язковим</div>
+                        <div *ngIf="secondName.errors?.['minlength']">Мінімально 2 букви</div>
+                        <div *ngIf="secondName.errors?.['pattern']">Допускаються тільки кирилиця</div>
+                    </div>
+                </div>
+                <div class="form-group mb-2">
+                    <div [class]="{'input-group': true,
+                    'is-invalid': phoneNumberMain.invalid && (phoneNumberMain.dirty || phoneNumberMain.touched),
+                    'is-valid': phoneNumberMain.valid && (phoneNumberMain.dirty || phoneNumberMain.touched)}">
+                        <span class="input-group-text">+380</span>
+                        <span [class]="{
+                        'form-floating': true}">
+                            <input [class]="{'form-control': true,
+                    'is-invalid': phoneNumberMain.invalid && (phoneNumberMain.dirty || phoneNumberMain.touched),
+                    'is-valid': phoneNumberMain.valid && (phoneNumberMain.dirty || phoneNumberMain.touched)}"
+                                   formControlName="phoneNumberMain"
+                                   id="phoneNumberMain"
+                                   maxlength="9"
+                                   placeholder="Ваш номер телефону"
+                                   type="text">
+                        <label for="phoneNumberMain">Ваш номер<small class="text-danger">*</small></label>
+                        </span>
+
+                    </div>
+
+                    <div class="invalid-feedback">
+                        <div *ngIf="phoneNumberMain.errors?.['required']">Це поле є обов'язковим</div>
+                        <div *ngIf="phoneNumberMain.errors?.['minlength'] && !phoneNumberMain.errors?.['required']">
+                            Номер надто короткий
+                        </div>
+                        <div *ngIf="phoneNumberMain.errors?.['forbiddenNumber']
+                        && !phoneNumberMain.errors?.['minlength']
+                        && !phoneNumberMain.errors?.['required']">
+                            Не правильний номер
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4>Доставка</h4>
+            <div class="row mb-2">
+                <div (click)="npClick(npSelect)" class="col-lg input-group">
+                    <span class="input-group-text">Нова пошта:<small class="text-danger">*</small></span>
+                    <input
+                            class="form-control"
+                            formControlName="np"
+                            placeholder="Натисніть для вибору">
+                </div>
+                <app-map-component *ngIf="chosenNP" [depot]="chosenNP | async"></app-map-component>
+                <ng-template #npSelect>
+                    <app-np-selector (newAddress)="saveNpAddress($event)"></app-np-selector>
+                </ng-template>
+            </div>
+            <h4>Коментар<small class="text-danger">*</small></h4>
+            <div class="row mb-2">
+                <div class="form-group">
+                    <label class="form-label" for="description">Побажання:</label>
+                    <textarea class="form-control"
+                              formControlName="description"
+                              id="description"
+                              placeholder="Ваш коментар або опис замовлення"
+                              required="true"
+                              rows="3"
+                              spellcheck="true"
+                              style="height: 132px;"></textarea>
+                </div>
+            </div>
+            <h4>Файли</h4>
+            <div class="row mb-2">
+                <div class="form-group">
+                    <!--                    <label class="form-label" for="formFile">Default file input example</label>-->
+                    <input (change)="onFileChange($event)" class="form-control"
+                           formControlName="files" id="files" multiple
+                           type="file">
+                </div>
+            </div>
+            <h4>Додаткові контакти <small class="fw-light text-info">(опціонально)</small></h4>
+            <div class="row">
+                <div class="form-floating col-lg mb-2">
+                    <input [class]="{
+                    'is-invalid': telegram.invalid && (telegram.dirty || telegram.touched),
+                    'is-valid': telegram.valid && telegram.dirty && telegram.value !== '',
+                    'form-control': true}"
+                           formControlName="telegram"
+                           id="telegram"
+                           placeholder="telegram"
+                           type="text">
+                    <label for="telegram">Telegram</label>
+                    <div class="invalid-feedback">
+                        <div *ngIf="telegram.errors?.['minlength']">Надто короткий тег</div>
+                        <div *ngIf="telegram.errors?.['maxlength']">Надто довгий тег</div>
+                        <div *ngIf="telegram.errors?.['pattern']">Не правильний тег</div>
+                    </div>
+                </div>
+                <div class="form-floating col-lg mb-2">
+                    <input [class]="{
+                    'is-invalid': email.invalid && (email.dirty || email.touched),
+                    'is-valid': email.valid && email.dirty && email.value !== '',
+                    'form-control': true}"
+                           formControlName="email"
+                           id="email"
+                           placeholder="Email"
+                           type="text">
+                    <label for="email">Email</label>
+                    <div class="invalid-feedback">
+                        <div *ngIf="email.errors?.['email']">Не правильний адрес</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-lg">
+                    <input
+                            [disabled]="!myForm.valid"
+                            [ngClass]="{
+                           'w-100': true,
+                           'btn': true,
+                           'btn-warning': !myForm.valid,
+                           'btn-success': myForm.valid
+                           }"
+                            type="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

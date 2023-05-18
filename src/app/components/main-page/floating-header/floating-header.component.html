@@ -1,6 +1,27 @@
-<div class="anchor">
-    <header [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent}"
-            class="content-container header">
-        <app-contacts [flexDirection]="'row'"></app-contacts>
-    </header>
+<div class="anchor ">
+    <nav [ngClass]="{'sticky': sticky, 'transparent': transparent, 'opaque': !transparent, 'bg-primary': sticky || !isMenuCollapsed}"
+         class="navbar navbar-expand-md navbar-dark w-100 header my-0 mb-3 floating-header px-1">
+        <div class="container">
+            <a [routerLink]="'./create'" class="btn btn-secondary">
+                <span class="navbar-brand">
+                  <i class="fa-solid fa-wrench fa-bounce"></i>
+                Залишити заявку
+                </span>
+            </a>
+
+            <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;
+            </button>
+
+            <span [collapse]="isMenuCollapsed" [isAnimated]="true" class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li *ngFor="let item of contactsList;">
+                        <a class="btn mx-1" routerLink="/{{item.name}}">
+                            <i class="{{item.icon}}"></i>
+                            {{item.name}}
+                        </a>
+                    </li>
+                </ul>
+            </span>
+        </div>
+    </nav>
 </div>

@@ -1,22 +1,22 @@
 [
   {
     "name": "CoPET",
-    "price": 2.50,
+    "price": "2,50",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A earum illum magni qui sint. Id."
   },
   {
     "name": "PLA",
-    "price": 2.50,
+    "price": "2,50",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, dolorem eius ex libero quas vero."
   },
   {
     "name": "ABS",
-    "price": 2.80,
+    "price": "2,80",
     "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius esse nam obcaecati sit ut veniam."
   },
   {
     "name": "ABS+",
-    "price": 3.10,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi error id illum sed tempore veniam!"
+    "price": "3,10",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi error id illum sed tempore!"
   }
 ]

@@ -8,7 +8,8 @@ import {FloatingHeaderComponent} from './floating-header/floating-header.compone
 import {PricingComponent} from './pricing/pricing.component';
 import {ContactsComponent} from './contacts/contacts.component';
 import {NgxVisibilityModule} from "ngx-visibility";
-import { NewApplicationComponent } from './new-application/new-application.component';
+import {NewApplicationComponent} from './new-application/new-application.component';
+import {CollapseModule} from "ngx-bootstrap/collapse";
 
 
 const routes: Routes = [
@@ -25,10 +26,13 @@ const routes: Routes = [
         ContactsComponent,
         NewApplicationComponent
     ],
+    exports: [],
     imports: [
         CommonModule,
         NgxVisibilityModule,
-        RouterModule.forChild(routes)
+
+        RouterModule.forChild(routes),
+        CollapseModule
     ]
 })
 export class MainPageModule {
