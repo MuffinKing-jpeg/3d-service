@@ -1,8 +1,0 @@
-<ul [ngStyle]="{'flex-direction': flexDirection}" class="contacts-list">
-    <li *ngFor="let item of contactsList; index as i;" class="contacts-list-item">
-        <a routerLink="/{{item.name}}">
-            <i class="{{item.icon}}"></i>
-            {{item.name}}
-        </a>
-    </li>
-</ul>

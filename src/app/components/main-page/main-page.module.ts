@@ -6,7 +6,6 @@ import {MainPageComponent} from './main-page.component';
 import {AboutUsComponent} from './about-us/about-us.component';
 import {FloatingHeaderComponent} from './floating-header/floating-header.component';
 import {PricingComponent} from './pricing/pricing.component';
-import {ContactsComponent} from '../common/contacts/contacts.component';
 import {NgxVisibilityModule} from 'ngx-visibility';
 import {NewApplicationComponent} from './new-application/new-application.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
@@ -23,7 +22,6 @@ const routes: Routes = [
     AboutUsComponent,
     FloatingHeaderComponent,
     PricingComponent,
-    ContactsComponent,
     NewApplicationComponent,
   ],
   exports: [],
