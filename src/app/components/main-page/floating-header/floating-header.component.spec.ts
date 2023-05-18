@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { FloatingHeaderComponent } from './floating-header.component';
+import {FloatingHeaderComponent} from './floating-header.component';
 
 describe('FloatingHeaderComponent', () => {
   let component: FloatingHeaderComponent;
@@ -8,9 +8,9 @@ describe('FloatingHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FloatingHeaderComponent ]
+      declarations: [FloatingHeaderComponent],
     })
-    .compileComponents();
+        .compileComponents();
 
     fixture = TestBed.createComponent(FloatingHeaderComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NpSelectorComponent } from './np-selector.component';
+import {NpSelectorComponent} from './np-selector.component';
 
 describe('NpSelectorComponent', () => {
   let component: NpSelectorComponent;
@@ -8,9 +8,9 @@ describe('NpSelectorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NpSelectorComponent ]
+      declarations: [NpSelectorComponent],
     })
-    .compileComponents();
+        .compileComponents();
 
     fixture = TestBed.createComponent(NpSelectorComponent);
     component = fixture.componentInstance;
