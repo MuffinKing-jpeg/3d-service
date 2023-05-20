@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormControl, UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import Materials from '../../../config/materials.json';
 import {AsYouType} from 'libphonenumber-js';
@@ -18,11 +18,16 @@ import {Router} from '@angular/router';
 export class CreateFormComponent implements OnInit {
   formData = new FormData();
   bsModalRef?: BsModalRef;
+  @ViewChild('sendingModal', {static: true})
+    sendingModal!: TemplateRef<any>;
+
   public materials = Materials;
   public selectedMaterial?: typeof Materials[0];
 
+
   isDev = environment.environment === 'dev';
   myForm?: UntypedFormGroup;
+
   firstName = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
@@ -56,18 +61,20 @@ export class CreateFormComponent implements OnInit {
     Validators.email,
   ]);
 
-  np = new FormControl('');
+  np = new FormControl('', [
+    Validators.required,
+  ]);
   description = new FormControl('');
-  files = new FormControl([]);
+  files = new FormControl(null);
   material = new FormControl(`${this.materials[0].name}`);
   numberInProcess = new AsYouType('UA');
   public chosenNP!: Observable<NpDepotInterface>;
 
   constructor(
-        private formBuilder: UntypedFormBuilder,
-        private http: HttpClient,
-        private router: Router,
-        private modalService?: BsModalService
+    private formBuilder: UntypedFormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private modalService?: BsModalService
   ) {
   }
 
@@ -130,7 +137,7 @@ export class CreateFormComponent implements OnInit {
       this.formData
           .append('telegram_c', this.telegram.value);
     }
-    if (this.phoneNumberMain.value) this.formData.append('phone_office', this.phoneNumberMain.value);
+    if (this.phoneNumberMain.value) this.formData.append('phone_office', '+380' + this.phoneNumberMain.value);
     if (this.firstName.value && this.secondName.value) {
       this.formData.append(
           'name',
@@ -140,24 +147,38 @@ export class CreateFormComponent implements OnInit {
     if (this.description.value) this.formData.append('description', this.description.value);
     if (this.material.value) this.formData.append('material', this.material.value);
     const funcUrl = environment.environment === 'production' ?
-            'https://us-central1-printspeed-3d.cloudfunctions.net/newApplication' :
-            'http://127.0.0.1:5001/printspeed-3d/us-central1/newApplication';
+      'https://us-central1-printspeed-3d.cloudfunctions.net/newApplication' :
+      'http://127.0.0.1:5001/printspeed-3d/us-central1/newApplication';
 
     const upload$ = this.http.post(funcUrl, this.formData);
-
+    this.modalService?.show(this.sendingModal, {
+      animated: true,
+      ignoreBackdropClick: true,
+    });
     upload$.subscribe({
       next: (v) => {
         console.log(v);
-        this.router
-            .navigateByUrl('/success')
-            .catch((err) => {
-              console.log(err);
-            });
+        this.rerouteAfterUpdate(true, '');
       },
-      error: (err) => {
+      error: (err: Error) => {
+        this.rerouteAfterUpdate(false, err.name);
         console.log(err);
       },
     });
+  };
+
+  rerouteAfterUpdate = (success: boolean, status: string) => {
+    this.modalService?.hide();
+    this.router
+        .navigateByUrl('/result', {
+          state: {
+            postFormSuccess: success,
+            postFormResponse: status,
+          },
+        })
+        .catch((err) => {
+          console.log(err);
+        });
   };
 
 

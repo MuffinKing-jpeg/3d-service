@@ -29,9 +29,9 @@ const routes: Routes = [
         .then((m) => m.CreateModule),
   },
   {
-    path: 'success',
-    loadChildren: () => import('./components/success/success.module')
-        .then((m) => m.SuccessModule),
+    path: 'result',
+    loadChildren: () => import('./components/result/result.module')
+        .then((m) => m.ResultModule),
   },
   ...contactsRoutes,
 ];
