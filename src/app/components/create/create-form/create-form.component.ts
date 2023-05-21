@@ -22,12 +22,8 @@ export class CreateFormComponent implements OnInit {
     sendingModal!: TemplateRef<any>;
 
   public materials = Materials;
-  public selectedMaterial?: typeof Materials[0];
-
-
   isDev = environment.environment === 'dev';
   myForm?: UntypedFormGroup;
-
   firstName = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
@@ -35,7 +31,6 @@ export class CreateFormComponent implements OnInit {
     Validators.required,
     Validators.maxLength(24),
   ]);
-
   secondName = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
@@ -43,32 +38,30 @@ export class CreateFormComponent implements OnInit {
     Validators.required,
     Validators.maxLength(24),
   ]);
-
   phoneNumberMain = new FormControl('', [
     Validators.minLength(9),
     Validators.required,
     Validators.maxLength(9),
     phoneNumberIsValid(),
   ]);
-
   telegram = new FormControl('', [
     Validators.pattern(/^@[a-zA-Z0-9_]+$/),
     Validators.minLength(5),
     Validators.maxLength(32),
   ]);
-
   email = new FormControl('', [
     Validators.email,
   ]);
-
   np = new FormControl('', [
     Validators.required,
   ]);
   description = new FormControl('');
   files = new FormControl(null);
-  material = new FormControl(`${this.materials[0].name}`);
   numberInProcess = new AsYouType('UA');
   public chosenNP!: Observable<NpDepotInterface>;
+  clickedMaterial = window.history.state?.['material'];
+  selectedMaterial = this.clickedMaterial ? this.clickedMaterial : Materials[0];
+  material = new FormControl(`${this.selectedMaterial.name}`);
 
   constructor(
     private formBuilder: UntypedFormBuilder,
@@ -107,15 +100,18 @@ export class CreateFormComponent implements OnInit {
 
     });
     this.np.disable();
-    this.selectedMaterial = this.searchMaterial(this.myForm.value?.['material']);
+    if (this.searchMaterial(this.myForm.value?.['material'])) {
+      this.selectedMaterial = this.searchMaterial(this.myForm.value?.['material']);
+    }
+
 
     this.myForm.valueChanges.subscribe((value) => {
-      this.selectedMaterial = this.searchMaterial(value?.['material']);
+      if (this.searchMaterial(value?.['material'])) {
+        this.selectedMaterial = this.searchMaterial(value?.['material']);
+      }
       this.numberInProcess.input(value?.['phoneNumberMain']);
-      console.log(value);
       const parsedNumber = this.numberInProcess.getNationalNumber();
       if (parsedNumber) {
-        // this.files.setValue(file)
         this.phoneNumberMain.setValue(parsedNumber, {
           emitEvent: false,
         });
