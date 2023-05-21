@@ -12,7 +12,9 @@
                     <div class="mt-1 pb-2 mb-auto">
                         {{item.description}}
                     </div>
-                    <a class="w-100 btn btn-lg btn-primary mt-auto mb-0" routerLink="./create" type="button">
+                    <a [state]="{material: item}" class="w-100 btn btn-lg btn-primary mt-auto mb-0"
+                       routerLink="./create"
+                       type="button">
                         Обрати
                     </a>
                 </div>
