@@ -7,7 +7,7 @@
                 Залишиити заявку
             </a>
         </li>
-        <li *ngFor="let item of contactsList;" class="col my-1 px-1">
+        <li *ngFor="let item of contactsList;" class="col my-1 px-1" id="Contacts">
             <a class="btn btn-secondary w-100" routerLink="/{{item.name}}">
                 <i class="{{item.icon}}"></i>
                 {{item.name}}
