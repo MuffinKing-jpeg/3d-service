@@ -10,6 +10,6 @@ export class RedirectComponent {
   public route?: string;
 
   constructor(private router: Router) {
-    this.route = this.router.url;
+    this.route = this.router.url.replace('/', '');
   }
 }
