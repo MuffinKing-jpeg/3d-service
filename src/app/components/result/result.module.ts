@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {ResultPageComponent} from './success-page/result-page.component';
+import {ResultPageComponent} from './result-page/result-page.component';
 import {RouterModule, Routes} from '@angular/router';
 
 

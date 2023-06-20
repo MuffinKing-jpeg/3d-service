@@ -1,0 +1,38 @@
+<div class="text-center container">
+    <h1 [class]="{'text-success': isSuccess, 'text-danger': !isSuccess}">
+        <span *ngIf="isSuccess">
+            Успіх! <br>
+                <i class="fa-solid fa-circle-check fa-beat"></i>
+        </span>
+        <span *ngIf="!isSuccess">
+            Біда трапилась
+            <br>
+            <!--            <i class="fa-solid fa-triangle-exclamation fa-beat-fade"></i>-->
+           <svg class="my-2" height="86" viewBox="0 0 128 86" width="128" xmlns="http://www.w3.org/2000/svg">
+            <path class="dino" d=""/>
+           </svg>
+
+        </span>
+
+    </h1>
+
+
+    <h4 *ngIf="isSuccess">Скоро з вами зв'яжеться менеджер для уточненя деталей замовлення</h4>
+    <h4 *ngIf="!isSuccess">{{errText}}</h4>
+    <div>
+        <a (click)="window.history.back()" *ngIf="!isSuccess" class="btn btn-secondary fw-bolder fs-5">Повернутись</a>
+
+        <a *ngIf="isSuccess" class="btn btn-secondary fs-5" routerLink="/create">Замовити ще</a>
+    </div>
+    <div class="fs-5 my-2">
+        <p>Ви також можете зв'затись з нами у соцмеражх</p>
+        <ul class="list-unstyled ms-auto d-flex flex-row flex-wrap justify-content-center">
+            <li *ngFor="let item of ContactsJson;">
+                <a class="btn-link mx-1 my-1 fw-bold fs-5" routerLink="/{{item.name}}">
+                    <i class="{{item.icon}}"></i>
+                    {{item.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
